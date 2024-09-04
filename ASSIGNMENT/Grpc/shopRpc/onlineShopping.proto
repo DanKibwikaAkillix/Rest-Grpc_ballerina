@@ -1,0 +1,129 @@
+syntax = "proto3";
+
+package onlineShopping;
+
+// The service definition for the online shopping system.
+service ShoppingService {
+  // Admin operations
+  rpc addProduct(AddProductRequest) returns (AddProductResponse);
+  rpc updateProduct(UpdateProductRequest) returns (UpdateProductResponse);
+  rpc removeProduct(RemoveProductRequest) returns (RemoveProductResponse);
+  rpc listAllOrders(EmptyRequest) returns (OrderList);
+
+  // Customer operations
+  rpc createUsers(stream UserRequest) returns (CreateUsersResponse);
+  rpc listAvailableProducts(EmptyRequest) returns (ProductList);
+  rpc searchProduct(SearchProductRequest) returns (SearchProductResponse);
+  rpc addToCart(AddToCartRequest) returns (CartResponse);
+  rpc placeOrder(PlaceOrderRequest) returns (OrderResponse);
+}
+
+// Request and response messages
+
+message AddProductRequest {
+  string name = 1;
+  string description = 2;
+  double price = 3;
+  int32 stockQuantity = 4;
+  string sku = 5;
+  bool available = 6;
+}
+
+message AddProductResponse {
+  string productCode = 1;
+}
+
+message UpdateProductRequest {
+  
+  string productCode = 1;
+  string name = 2;
+  string description = 3;
+  double price = 4;
+  int32 stockQuantity = 5;
+  bool available = 6;
+}
+
+message UpdateProductResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message RemoveProductRequest {
+  string productCode = 1;
+}
+
+message RemoveProductResponse {
+  repeated Product updatedProducts = 1;
+}
+
+message EmptyRequest {}
+
+message OrderList {
+  repeated Order orders = 1;
+}
+
+message UserRequest {
+  string userId = 1;
+  string userName = 2;
+  string userType = 3; // "admin" or "customer"
+}
+
+message CreateUsersResponse {
+  int32 numberOfUsersCreated = 1;
+}
+
+message ProductList {
+  repeated Product products = 1;
+}
+
+message SearchProductRequest {
+  string sku = 1;
+}
+
+message SearchProductResponse {
+  Product product = 1;
+  string message = 2;
+}
+
+message AddToCartRequest {
+  string userId = 1;
+  string sku = 2;
+}
+
+message CartResponse {
+  string cartId = 1;
+  repeated CartItem items = 2;
+}
+
+message PlaceOrderRequest {
+  string userId = 1;
+  string cartId = 2;
+}
+
+message OrderResponse {
+  string orderId = 1;
+  string message = 2;
+}
+
+message Product {
+  string productCode = 1;
+  string name = 2;
+  string description = 3;
+  double price = 4;
+  int32 stockQuantity = 5;
+  string sku = 6;
+  bool available = 7;
+}
+
+message CartItem {
+  string sku = 1;
+  int32 quantity = 2;
+}
+
+message Order {
+  string orderId = 1;
+  string userId = 2;
+  repeated Product products = 3;
+  double totalAmount = 4;
+  string status = 5;
+}

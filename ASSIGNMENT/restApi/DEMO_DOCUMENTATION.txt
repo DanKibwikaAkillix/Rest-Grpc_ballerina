@@ -1,0 +1,23 @@
+{
+    "programme_code": "P12345",
+    "programme_title": "Random Programme",
+    "nqf_level": 7,
+    "faculty": "Faculty of Science",
+    "department": "Department of Computer Science",
+    "registration_date": "2024-09-03",
+    "courses": [
+        {
+            "course_name": "Intro to Programming",
+            "course_code": "CS101",
+            "nqf_level": 4
+        },
+        {
+            "course_name": "Data Structures",
+            "course_code": "CS201",
+            "nqf_level": 5
+        }
+    ]
+}
+
+
+link: http://localhost:9000/programmes/programmes/
