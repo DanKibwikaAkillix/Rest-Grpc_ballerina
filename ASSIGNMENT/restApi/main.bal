@@ -7,7 +7,7 @@ service /programmes on new http:Listener(9000) {
         return programmeTable.toArray();
     }
 
-    // Add a new programme
+    // Adding a new programe
     resource function post programmes(@http:Payload Programme programme) returns Programme|ConflictingProgrammeCodeError {
         if programmeTable.hasKey(programme.programme_code) {
             return {
