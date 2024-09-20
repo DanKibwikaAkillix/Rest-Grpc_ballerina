@@ -47,7 +47,7 @@ service /programmes on new http:Listener(9000) {
         return "Programme deleted successfully.";
     }
 
-    // Retrieve all programmes by faculty
+    // Retrieve all programmes by faculty 
     resource function get programmes/faculty/[string faculty_name]() returns Programme[] {
         return from Programme p in programmeTable
             where p.faculty == faculty_name
@@ -73,7 +73,7 @@ public type Course record {|
 |};
 
 public final table<Programme> key(programme_code) programmeTable = table [
-    // Add initial programmes here if needed
+    // Add initial programmes here if needed 
 ];
 
 public type ConflictingProgrammeCodeError record {|
@@ -90,4 +90,4 @@ public type ErrorMsg record {|
     string errmsg;
 |};
 
-// Utility function to calculate years since a given date
+// Utility function to calculate years since a given date 
