@@ -18,7 +18,7 @@ service "ShoppingService" on ep {
         string productCode = uuid:createType1AsString();
         boolean addSuccess = extracted(value, productCode);
         if (!addSuccess) {
-            return error("not found to add product");
+            return error("Failed to add product");
         }
 
         return {
