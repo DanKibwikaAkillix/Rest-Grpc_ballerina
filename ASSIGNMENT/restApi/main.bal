@@ -90,4 +90,4 @@ public type ErrorMsg record {|
     string errmsg;
 |};
 
-// Utility function to calculate years since a given date 
+Utility function to calculate years since a given date 
