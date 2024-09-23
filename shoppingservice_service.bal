@@ -5,7 +5,7 @@ listener grpc:Listener ep = new (9090);
 
 @grpc:Descriptor {value: ONLINESHOPPING_DESC}
 service "ShoppingService" on ep {
-     //
+     ///
     # Description.
     #
     # + value - parameter description
